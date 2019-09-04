@@ -1,0 +1,22 @@
+<h1><%= @question.title %></h1>
+<p><%= @question.content %></p>
+
+<h4>Your Answers:</h4>
+
+<ul>
+  <% @question.answers.each do |answer| %>
+    <li><%= answer.content %></li>
+  <% end %>
+</ul>
+
+
+<h5>Submit your Answer</h5>
+<form action="/answer" method="post">
+  <textarea name="answer[content]" id="answer_content" cols="30" rows="10" placeholder="enter answer"></textarea>
+  <br>
+  <input type="hidden" id="answer_question_id" name="answer[question_id]" value="<%= @question.id %>">
+  <br>
+  <button type="submit" name="submit">Submit</button>
+</form>
+
+<a href="/questions">Go to questions</a>

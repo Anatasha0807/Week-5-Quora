@@ -1,0 +1,17 @@
+<h1>Questions</h1>
+<ul>
+  <% @questions.each do |question| %>
+    <li>
+      <%= question.title %> - <%= question.content %>
+      <p><a href="/questions/edit/<%= question.id %>">Edit</a></p>
+      <p><a href="/questions/<%= question.id %>">Answers</a></p>
+      <form method="post" action ="/questions/<%= question.id %>/delete">
+        <input type="hidden" name="_method" value ="delete">
+        <input type="submit" value="delete">
+      </form>
+    </li>
+
+  <% end %>
+</ul>
+
+<a href="/questions/new" class="btn btn-primary">Post A New Question</a>
